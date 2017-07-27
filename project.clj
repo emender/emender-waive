@@ -18,7 +18,18 @@
     :dependencies [[org.clojure/clojure "1.7.0"]
                    [org.clojure/java.jdbc "0.3.5"]
                    [org.clojure/tools.cli "0.3.1"]
-                   [org.xerial/sqlite-jdbc "3.7.2"]]
+                   [org.xerial/sqlite-jdbc "3.7.2"]
+                   [ring/ring-core "1.3.2"]
+                   [ring/ring-jetty-adapter "1.3.2"]
+                   [org.clojure/data.json "0.2.5"]
+                   [clj-http "2.0.0"]
+                   [clojure-ini "0.0.1"]
+                   [org.clojure/tools.logging "0.3.1"]
+                   [log4j/log4j "1.2.17" :exclusions [javax.mail/mail
+                                                      javax.jms/jms
+                                                      com.sun.jmdk/jmxtools
+                                                      com.sun.jmx/jmxri]]
+                   [org.slf4j/slf4j-log4j12 "1.6.6"]]
     :dev-dependencies [[lein-ring "0.8.10"]]
     :main ^:skip-aot emender-waive.core
     :target-path "target/%s"
