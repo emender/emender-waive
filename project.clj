@@ -36,6 +36,7 @@
               [test2junit "1.1.0"]
               [lein-cloverage "1.0.6"]]
     :main ^:skip-aot emender-waive.core
+    :ring {:handler emender-jenkins.core/app}
     :target-path "target/%s"
     :profiles {:uberjar {:aot :all}})
 
