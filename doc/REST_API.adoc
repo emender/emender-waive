@@ -1,0 +1,107 @@
+REST API for Emender-Waive service
+==================================
+:icons: font
+Pavel Tišnovský <ptisnovs@redhat.com>
+v1.1, 2017-08-04
+
+Emender-Waive service is controlled via REST API.
+Basic supported operations:
+
+Test waives CRUD:
+
+Other test waives-related calls:
+
+Other calls:
+
+* get info about the application
+* get banner
+
+
+REST API calls
+--------------
+
+
+
+Info
+~~~~
+
+    /api/v1
+
+Gets information about the app, such as the version currently running.
+
+Method: +GET+
+
+Content-Type: +application/json+
+
+Example: +curl http://url-to-interface:port/api/v1+
+
+Response:
+
+[source,json]
+----
+{
+    "name" :       "Emender Waive Service",
+    "version" :    "0.1.0",
+    "api_prefix" : "/api/v1",
+    "hostname" :   "hostname"
+}
+----
+
+HTTP Status Code:
++HTTP/1.1 200 OK+
+
+
+
+Show configuration
+~~~~~~~~~~~~~~~~~~
+
+    /api/v1/configuration
+
+Gets information about the current configuration.
+
+Method: +GET+
+
+Content-Type: +application/json+
+
+Example: +curl http://url-to-interface:port/api/v1/configuration+
+
+Response:
+
+[source,json]
+----
+TBD
+----
+
+HTTP Status Code:
++HTTP/1.1 200 OK+
+
+
+
+Banner
+~~~~~~
+
+    api/v1/system/banners
+
+Gets the banners that should be displayed in the UI.
+
+Method: +GET+
+
+Content­Type: +application/json+
+
+Example: +curl http://url-to-interface:port/api/v1/system/banners+
+
+Response:
+
+[source,json]
+----
+[ 
+    { 
+        "message": "Alpha version",
+        "type":    "warning" 
+    } 
+] 
+----
+
+HTTP Status Code:
++HTTP/1.1 200 OK+
+
