@@ -1,0 +1,6 @@
+Overview of Emender-Waive Architecture
+======================================
+:icons: font
+Pavel Tišnovský <ptisnovs@redhat.com>
+v1.0, 2017-08-04
+
