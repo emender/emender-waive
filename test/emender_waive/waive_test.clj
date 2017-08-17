@@ -14,6 +14,23 @@
   (:require [clojure.test :refer :all]
             [emender-waive.waive :refer :all]))
 
+;
+; Common functions used by tests.
+;
+
+(defn callable?
+    "Test if given function-name is bound to the real function."
+    [function-name]
+    (clojure.test/function? function-name))
+
+;
+; Tests for functions existence
+;
+
+;
+; Tests for functions behaviour
+;
+
 (deftest a-test
   (testing "FIXME, I fail."
     (is (= 0 1))))
