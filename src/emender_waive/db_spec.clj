@@ -13,7 +13,7 @@
 (ns emender-waive.db-spec
     "Namespace that contains configuration of all JDBC sources.")
 
-(def emender-jenkins-db
+(def emender-waive-db
     {:classname   "org.sqlite.JDBC"
      :subprotocol "sqlite"
      :subname     "emender-waive.db"
