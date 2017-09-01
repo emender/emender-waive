@@ -35,7 +35,8 @@
     :plugins [[lein-ring "0.8.10"]
               [codox "0.8.11"]
               [test2junit "1.1.0"]
-              [lein-cloverage "1.0.6"]]
+              [lein-cloverage "1.0.6"]
+              [lein-cucumber "1.0.2"]]
     :main ^:skip-aot emender-waive.core
     :ring {:handler emender-jenkins.core/app}
     :target-path "target/%s"
