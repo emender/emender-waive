@@ -24,6 +24,7 @@
                    [org.clojure/data.json "0.2.5"]
                    [clj-http "2.0.0"]
                    [clojure-ini "0.0.1"]
+                   [hiccup "1.0.4"]
                    [org.clojure/tools.logging "0.3.1"]
                    [log4j/log4j "1.2.17" :exclusions [javax.mail/mail
                                                       javax.jms/jms
