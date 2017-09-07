@@ -13,12 +13,13 @@
 (ns emender-waive.server
     "Server module that accepts all requests from users and generates proper responses.")
 
-(require '[clojure.pprint           :as pprint])
-(require '[ring.util.response       :as http-response])
-(require '[clojure.tools.logging    :as log])
+(require '[clojure.pprint         :as pprint])
+(require '[ring.util.response     :as http-response])
+(require '[clojure.tools.logging  :as log])
 
-(require '[emender-waive.config     :as config])
-(require '[emender-waive.rest-api   :as rest-api])
+(require '[emender-waive.config   :as config])
+(require '[emender-waive.rest-api :as rest-api])
+(require '[emender-waive.ui       :as ui])
 
 (use     '[emender-waive.utils])
 
@@ -32,7 +33,7 @@
 (defn render-front-page
     "Create front page."
     [request]
-    (return-file "index.html" "text/html"))
+    (ui/render-front-page))
 
 (defn render-error-page
     "Create error page."
@@ -72,6 +73,14 @@
             [:get  ""]                      (rest-api/info-handler request   (get-hostname))
         )))
 
+(defn gui-call-handler
+    "This function is used to handle all GUI calls. Three parameters are expected:
+     data structure containing HTTP request, string with URI, and the HTTP method."
+    [request uri method]
+    (let [html-output (render-front-page request)]
+         (-> (http-response/response html-output)
+             (http-response/content-type "text/html"))))
+
 (defn non-api-call-handler
     "This function is used to handle all API calls. Two parameters are expected:
      data structure containing HTTP request and string with URI."
@@ -95,6 +104,9 @@
     (log-request request)
     (let [uri    (:uri request)
           method (:request-method request)]
-         (if (startsWith uri (config/get-api-prefix request))
-             (api-call-handler     request uri method)
-             (non-api-call-handler request uri))))
+         (cond (startsWith uri (config/get-api-prefix request))
+                   (api-call-handler request uri method)
+               (startsWith uri (config/get-gui-prefix request))
+                   (gui-call-handler request uri method)
+               :else
+                   (non-api-call-handler request uri))))
