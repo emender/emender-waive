@@ -84,6 +84,3 @@
 ; Tests for functions behaviour
 ;
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
