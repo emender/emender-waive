@@ -75,6 +75,12 @@
         (is (callable? 'emender-waive.utils/get-exception-message))))
 
 
+(deftest test-throw-exception-existence
+    "Check that the emender-waive.utils/throw-exception definition exists."
+    (testing "if the emender-waive.utils/throw-exception definition exists."
+        (is (callable? 'emender-waive.utils/throw-exception))))
+
+
 (deftest test-parse-int-existence
     "Check that the emender-waive.utils/parse-int definition exists."
     (testing "if the emender-waive.utils/parse-int definition exists."
@@ -467,3 +473,9 @@
         (parse-float "xyzzy")
         (parse-float "-1xyzzy")))
 
+(deftest test-throw-exception
+    "Check the behaviour of function emender-waive.utils/throw-exception."
+    (are [x] (thrown? Exception x)
+        (throw-exception "")
+        (throw-exception "message")
+        (throw-exception "prefix" (new Exception "message"))))
