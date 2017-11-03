@@ -47,3 +47,31 @@
 ; Tests for functions behaviour
 ;
 
+(deftest test-properties->map-1
+    "Check the behaviour of function emender-waive.config-loader/properties->map."
+    (let [property (doto (new java.util.Properties)
+                         (.setProperty "a" "A")
+                         (.setProperty "b" "B"))]
+        (is (= {:a "A" :b "B"} (properties->map property)))))
+
+(deftest test-properties->map-2
+    "Check the behaviour of function emender-waive.config-loader/properties->map."
+    (let [property (doto (new java.util.Properties)
+                         (.setProperty "propertyA" "property_a")
+                         (.setProperty "propertyB" "property_b"))]
+        (is (= {:propertyA "property_a" :propertyB "property_b"} (properties->map property)))))
+
+(deftest test-properties->map-3
+    "Check the behaviour of function emender-waive.config-loader/properties->map."
+    (let [property (doto (new java.util.Properties)
+                         (.setProperty "value1" "1")
+                         (.setProperty "value2" "2"))]
+        (is (= {:value1 "1" :value2 "2"} (properties->map property)))))
+
+(deftest test-properties->map-4
+    "Check the behaviour of function emender-waive.config-loader/properties->map."
+    (let [property (doto (new java.util.Properties)
+                         (.setProperty "value1" "")
+                         (.setProperty "" "2"))]
+        (is (= {(keyword "") "2" :value1 ""} (properties->map property)))))
+
