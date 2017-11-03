@@ -26,6 +26,22 @@
 ;
 ; Tests for functions existence
 ;
+(deftest test-properties->map-existence
+    "Check that the emender-waive.config-loader/properties->map definition exists."
+    (testing "if the emender-waive.config-loader/properties->map definition exists."
+        (is (callable? 'emender-waive.config-loader/properties->map))))
+
+
+(deftest test-load-property-file-existence
+    "Check that the emender-waive.config-loader/load-property-file definition exists."
+    (testing "if the emender-waive.config-loader/load-property-file definition exists."
+        (is (callable? 'emender-waive.config-loader/load-property-file))))
+
+
+(deftest test-load-configuration-file-existence
+    "Check that the emender-waive.config-loader/load-configuration-file definition exists."
+    (testing "if the emender-waive.config-loader/load-configuration-file definition exists."
+        (is (callable? 'emender-waive.config-loader/load-configuration-file))))
 
 ;
 ; Tests for functions behaviour
