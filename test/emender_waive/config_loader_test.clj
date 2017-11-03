@@ -75,3 +75,36 @@
                          (.setProperty "" "2"))]
         (is (= {(keyword "") "2" :value1 ""} (properties->map property)))))
 
+(deftest test-load-property-file
+    "Check the behaviour of function emender-waive.config-loader/load-property-file."
+    (let [property (load-property-file "test/test1.properties")]
+        (is (= {:value1 "value1" :value2 "42" :value.3 "3"} (properties->map property)))))
+
+(deftest test-load-configuration-file-1
+    "Check the behaviour of function emender-waive.config-loader/load-configuration-file."
+    (let [cfg (load-configuration-file "test/test1.ini")]
+        (is (not (nil? cfg)))))
+
+(deftest test-load-configuration-file-2
+    "Check the behaviour of function emender-waive.config-loader/load-configuration-file."
+    (let [cfg (load-configuration-file "test/test1.ini")]
+        (is (not (nil? (:info cfg))))
+        (is (not (nil? (:jenkins cfg))))
+        (is (nil? (:other cfg)))))
+
+(deftest test-load-configuration-file-3
+    "Check the behaviour of function emender-waive.config-loader/load-configuration-file."
+    (let [cfg (load-configuration-file "test/test1.ini")]
+        (are [x y] (= x y)
+            (-> cfg :irc :server)   "irc.freenode.net"
+            (-> cfg :irc :port)     "6667"
+            (-> cfg :irc :channel)  "#botwar"
+            (-> cfg :irc :nick)     "emender"
+            (-> cfg :server :other) nil)))
+
+(deftest test-load-configuration-file-4
+    "Check the behaviour of function emender-waive.config-loader/load-configuration-file."
+    (let [cfg (load-configuration-file "test/test1.ini")]
+        (are [x y] (= x y)
+            (-> cfg :api :prefix)     "/api")))
+
