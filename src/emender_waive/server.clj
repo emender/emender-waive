@@ -21,7 +21,7 @@
 (require '[emender-waive.rest-api :as rest-api])
 (require '[emender-waive.ui       :as ui])
 
-(use     '[emender-waive.utils])
+(use     '[clj-utils.utils])
 
 (defn return-file
     "Creates HTTP response containing content of specified file.
