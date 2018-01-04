@@ -16,8 +16,8 @@
 
 (require '[clojure.pprint :as pprint])
 (require '[clojure.tools.logging :as log])
+(require '[clj-utils.utils :as utils])
 
-(require '[emender-waive.utils         :as utils])
 (require '[emender-waive.config-loader :as config-loader])
 
 (def default-port
